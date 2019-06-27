@@ -2269,7 +2269,7 @@ test('#visStateReducer -> SET_FILTER (processGeojson)', t => {
             index: 0
           },
           geometry: {
-            type: 'Polygon',
+            type: 'DrawPolygon',
             coordinates: [
               [
                 [-122.401159718585049, 37.782024266952142],
@@ -2304,7 +2304,7 @@ test('#visStateReducer -> SET_FILTER (processGeojson)', t => {
             index: 2
           },
           geometry: {
-            type: 'Polygon',
+            type: 'DrawPolygon',
             coordinates: [
               [
                 [-122.39249932896719, 37.793768814133983],

@@ -37,7 +37,11 @@ CSV file should contain header row and multiple columns. Each row should be 1 fe
 | b | 31.2311 | -127.30231 | 11 | 2019-08-01 12:05
 | c | 31.2334 | -127.30238 | 9 | 2019-08-01 11:55
 
+<<<<<<< HEAD
 #### 1. Data type detection
+=======
+- If a FeatureCollection contains different type of Features, Kepler.gl will render all features in one layer. Acceptable Feature types are [Point](https://tools.ietf.org/html/rfc7946#section-3.1.2), [MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3), [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4), [MultiLineString](https://tools.ietf.org/html/rfc7946#section-3.1.5), [DrawPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.6) and [MultiPolygon]((https://tools.ietf.org/html/rfc7946#section-3.1.7).
+>>>>>>> Able to draw shapes
 
 Because CSV file content is uploaded as strings, kepler.gl will attempt to detect column data type by parsing a sample of data in each column. kepler.gl can detect
 
@@ -139,7 +143,7 @@ id,geometry
             ]
         },
         "properties": {
-          "prop0": "value0",
+          "prop0": "value0"
         }
     }]
   }

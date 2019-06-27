@@ -180,7 +180,13 @@ export const INITIAL_VIS_STATE = {
 
   // default animation
   // time in unix timestamp (milliseconds) (the number of seconds since the Unix Epoch)
-  animationConfig: defaultAnimationConfig
+  animationConfig: defaultAnimationConfig,
+
+  editor: {
+    // GEO FEATURES (Shapes)
+    features: [],
+    selectedFeatureId: null
+  }
 };
 
 function updateStateWithLayerAndData(state, {layerData, layer, idx}) {
@@ -1469,4 +1475,15 @@ export function updateAnimationDomain(state) {
       domain: mergedDomain
     }
   };
+}
+
+export function setFeaturesUpdater(state, {features = []}) {
+  return {
+    ...state,
+    editor: {
+      ...state.editor,
+      features,
+      selectedFeatureId: (features[0] || {}).id
+    }
+  }
 }

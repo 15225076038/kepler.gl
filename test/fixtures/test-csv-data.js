@@ -894,7 +894,7 @@ export const updatedLayerV2 = {
         index: 1
       },
       geometry: {
-        type: 'Polygon',
+        type: 'DrawPolygon',
         coordinates: [
           [
             [-74.158491, 40.835947],
@@ -910,7 +910,7 @@ export const updatedLayerV2 = {
         index: 2
       },
       geometry: {
-        type: 'Polygon',
+        type: 'DrawPolygon',
         coordinates: [
           [
             [-74.31687, 40.656696],
@@ -936,7 +936,7 @@ export const updatedLayerV2 = {
         index: 4
       },
       geometry: {
-        type: 'Polygon',
+        type: 'DrawPolygon',
         coordinates: [
           [
             [-74.165995, 40.747969],
