@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
 import {Tooltip} from 'components/common/styled-components';
 import KeplerGlLogo from 'components/common/logo';
 import {Save, Files, Share, Picture, Map} from 'components/common/icons';
+import ClickOutsideCloseDropdown from 'components/side-panel/panel-dropdown';
 import Toolbar from 'components/common/toolbar';
 import ToolbarItem from 'components/common/toolbar-item';
 
@@ -170,6 +171,9 @@ export const SaveExportDropdownFactory = (
   }) => {
     return (
       <StyledToolbar show={show} onClose={onClose} className="save-export-dropdown">
+        <ClickOutsideCloseDropdown className="save-export-dropdown__inner"
+                                   show={show}
+                                   onClose={onClose}>
         <ExportImage
           onClick={() => {
             onExportImage();
@@ -196,7 +200,9 @@ export const SaveExportDropdownFactory = (
             }}
           />
         ) : null}
+        </ClickOutsideCloseDropdown>
       </StyledToolbar>
+
     );
   };
 

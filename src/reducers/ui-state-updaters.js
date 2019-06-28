@@ -27,7 +27,8 @@ import {
   EXPORT_MAP_FORMATS,
   EXPORT_HTML_MAP_MODES,
   DEFAULT_NOTIFICATION_TOPICS,
-  MAP_MODES
+  MAP_MODES,
+  EDITOR_MODES
 } from 'constants/default-settings';
 import {createNotification, errorNotification} from 'utils/notifications-utils';
 
@@ -175,6 +176,10 @@ export const DEFAULT_EXPORT_MAP = {
   format: EXPORT_MAP_FORMATS.HTML
 };
 
+export const DEFAULT_EDITOR = {
+  mode: EDITOR_MODES.READ_ONLY
+};
+
 /**
  * Default initial `uiState`
  * @memberof uiStateUpdaters
@@ -209,7 +214,9 @@ export const INITIAL_UI_STATE = {
   // load files
   loadFiles: DEFAULT_LOAD_FILES,
   // map mode
-  mode: MAP_MODES.READ_ONLY
+  mode: MAP_MODES.READ_ONLY,
+  // editor mode
+  editor: DEFAULT_EDITOR
 };
 
 /* Updaters */
@@ -580,7 +587,6 @@ export const removeNotificationUpdater = (state, {payload: id}) => ({
  * Fired when file loading begin
  * @memberof uiStateUpdaters
  * @param {Object} state `uiState`
- * @param {Object} action
  */
 export const loadFilesUpdater = (state) => ({
   ...state,
@@ -598,43 +604,26 @@ export const loadFilesSuccessUpdater = (state) => ({
   }
 });
 
-export const loadFilesErrUpdater = (state, {error}) =>
-  addNotificationUpdater(
-    {
-      ...state,
-      loadFiles: {
-        ...state.loadFiles,
-        fileLoading: false
-      }
-    },
-    {
-      payload: errorNotification({
-        message: (error || {}).message || 'Failed to upload files',
-        topic: DEFAULT_NOTIFICATION_TOPICS.global
-      })
+export const loadFilesErrUpdater = (state, {error}) => addNotificationUpdater(
+  {
+    ...state,
+    loadFiles: {
+      ...state.loadFiles,
+      fileLoading: false
     }
-  );
+  },
+  {
+    payload: errorNotification({
+      message: (error || {}).message || 'Failed to upload files',
+      topic: DEFAULT_NOTIFICATION_TOPICS.global
+    })
+  }
+);
 
-/**
- * Set map mode. If the new map mode is equal to the current one
- * The function will revert to READ_ONLY mode
- * @param {Object} state `uiState`
- * @param {Object} action
- * @param {String} action.payload mode to be applied to current kepler.gl instance
- * @return {Object} nextState
- */
-export const setMapModeUpdater = (state, {payload: mode}) => ({
+export const setEditorModeUpdater = (state, {payload: mode}) => ({
   ...state,
-  mode: mode === state.mode ? MAP_MODES.READ_ONLY : mode
+  editor: {
+    ...state.editor,
+    mode
+  }
 });
-
-export const setFeaturesUpdater = (state, {features = []}) => {
-  // if (features.length && features[features.length - 1].properties.isClosed) {
-  //   return {
-  //     ...state,
-  //     mode: MAP_MODES.READ_ONLY
-  //   };
-  // }
-
-  return state;
-};

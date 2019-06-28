@@ -53,7 +53,7 @@ export {
   DEFAULT_NOTIFICATION_TOPICS,
   DEFAULT_COLOR_RANGE,
   PANELS,
-  MAP_MODES
+  EDITOR_MODES
 } from './default-settings';
 
 export {
