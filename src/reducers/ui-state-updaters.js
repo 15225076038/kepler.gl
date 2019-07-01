@@ -27,7 +27,6 @@ import {
   EXPORT_MAP_FORMATS,
   EXPORT_HTML_MAP_MODES,
   DEFAULT_NOTIFICATION_TOPICS,
-  MAP_MODES,
   EDITOR_MODES
 } from 'constants/default-settings';
 import {createNotification, errorNotification} from 'utils/notifications-utils';
@@ -213,8 +212,6 @@ export const INITIAL_UI_STATE = {
   notifications: DEFAULT_NOTIFICATIONS,
   // load files
   loadFiles: DEFAULT_LOAD_FILES,
-  // map mode
-  mode: MAP_MODES.READ_ONLY,
   // editor mode
   editor: DEFAULT_EDITOR
 };
