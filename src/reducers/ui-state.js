@@ -56,10 +56,10 @@ const actionHandler = {
   [ActionTypes.LOAD_FILES]: uiStateUpdaters.loadFilesUpdater,
   [ActionTypes.LOAD_FILES_ERR]: uiStateUpdaters.loadFilesErrUpdater,
 
+  [ActionTypes.SET_EDITOR_MODE]: uiStateUpdaters.setEditorModeUpdater,
   [ActionTypes.SET_FEATURES]: uiStateUpdaters.setFeaturesUpdater,
-  [ActionTypes.SET_EXPORT_MAP_HTML_MODE]: uiStateUpdaters.setExportMapHTMLMode,
-  [ActionTypes.SET_EDITOR_MODE]: uiStateUpdaters.setEditorModeUpdater
-
+  [ActionTypes.SET_SELECTED_FEATURE]: uiStateUpdaters.setSelectedFeatureUpdater,
+  [ActionTypes.DELETE_FEATURE]: uiStateUpdaters.deleteFeatureUpdater
 };
 
 /* Reducer */

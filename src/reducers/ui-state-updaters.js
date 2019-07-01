@@ -176,7 +176,8 @@ export const DEFAULT_EXPORT_MAP = {
 };
 
 export const DEFAULT_EDITOR = {
-  mode: EDITOR_MODES.READ_ONLY
+  mode: EDITOR_MODES.READ_ONLY,
+  selectedFeature: null
 };
 
 /**
@@ -624,3 +625,50 @@ export const setEditorModeUpdater = (state, {payload: mode}) => ({
     mode
   }
 });
+
+/**
+ * Update editor mode once feature is closed
+ * @memberof uiStateUpdaters
+ * @param {Object} state `uiState`
+ * @param {[Object]} features to store
+ * @return {Object} nextState
+ */
+export function setFeaturesUpdater(state, {features = []}) {
+  if (!features.length) {
+    return state;
+  }
+  const lastFeature = features[features.length - 1];
+
+  return !lastFeature.properties.isClosed ?
+    state : {
+      ...state,
+      editor: {
+        ...state.editor,
+        mode: EDITOR_MODES.EDIT_VERTEX
+      }
+    };
+}
+
+export const setSelectedFeatureUpdater = (state, {payload: selectedFeature}) => ({
+  ...state,
+  editor: {
+    ...state.editor,
+    selectedFeature
+  }
+});
+
+/**
+ * @memberof uiStateUpdaters
+ * @param {Object} state `uiState`
+ * @param {string} selectedFeatureId feature to delete
+ * @return {Object} nextState
+ */
+export const deleteFeatureUpdater = (state, {payload: selectedFeatureId}) => {
+  return selectedFeatureId ? {
+    ...state,
+    editor: {
+      ...state.editor,
+      selectedFeature: null
+    }
+  } : state;
+};
