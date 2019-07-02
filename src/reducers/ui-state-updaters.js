@@ -657,6 +657,7 @@ export const setSelectedFeatureUpdater = (state, {payload: selectedFeature}) => 
   }
 });
 
+
 /**
  * @memberof uiStateUpdaters
  * @param {Object} state `uiState`
