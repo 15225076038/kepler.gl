@@ -176,7 +176,7 @@ export const DEFAULT_EXPORT_MAP = {
 };
 
 export const DEFAULT_EDITOR = {
-  mode: EDITOR_MODES.READ_ONLY,
+  mode: EDITOR_MODES.EDIT_VERTEX,
   selectedFeature: null
 };
 
@@ -228,14 +228,11 @@ export const INITIAL_UI_STATE = {
  * @public
  */
 export const toggleSidePanelUpdater = (state, {payload: id}) => {
-  if (id === state.activeSidePanel) {
-    return state;
-  }
-
-  return {
-    ...state,
-    activeSidePanel: id
-  };
+  return  id === state.activeSidePanel ?
+    state : {
+      ...state,
+      activeSidePanel: id
+    };
 };
 
 /**
@@ -628,8 +625,8 @@ export const setEditorModeUpdater = (state, {payload: mode}) => ({
 
 /**
  * Update editor mode once feature is closed
- * @memberof uiStateUpdaters
- * @param {Object} state `uiState`
+ * @memberof visStateUpdaters
+ * @param {Object} state `visState`
  * @param {[Object]} features to store
  * @return {Object} nextState
  */
@@ -637,7 +634,7 @@ export function setFeaturesUpdater(state, {features = []}) {
   if (!features.length) {
     return state;
   }
-  const lastFeature = features[features.length - 1];
+  const lastFeature = features[0];
 
   return !lastFeature.properties.isClosed ?
     state : {
@@ -656,7 +653,6 @@ export const setSelectedFeatureUpdater = (state, {payload: selectedFeature}) => 
     selectedFeature
   }
 });
-
 
 /**
  * @memberof uiStateUpdaters

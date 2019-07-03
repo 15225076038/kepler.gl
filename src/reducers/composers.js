@@ -26,7 +26,13 @@ import * as combinedUpdaters from './combined-updaters';
  * It is used to generate documentation
  */
 const actionHandler = {
+<<<<<<< HEAD
   [ActionTypes.ADD_DATA_TO_MAP]: combinedUpdaters.addDataToMapUpdater
+=======
+  [ActionTypes.UPDATE_VIS_DATA]: combinedUpdaters.updateVisDataUpdater,
+  [ActionTypes.ADD_DATA_TO_MAP]: combinedUpdaters.addDataToMapUpdater,
+  [ActionTypes.SET_FEATURES]: combinedUpdaters.setFeaturesUpdater
+>>>>>>> Highlight which editor mode is currenlty selected to provide an immediate feedback to users
 };
 
 export default actionHandler;

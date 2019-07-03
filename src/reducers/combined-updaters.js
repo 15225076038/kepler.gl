@@ -19,9 +19,13 @@
 // THE SOFTWARE.
 
 import {toggleModalUpdater, loadFilesSuccessUpdater} from './ui-state-updaters';
-import {updateVisDataUpdater as visStateUpdateVisDataUpdater} from './vis-state-updaters';
+import {
+  updateVisDataUpdater as visStateUpdateVisDataUpdater,
+  setFeaturesUpdater as visStateFeaturesUpdater
+} from './vis-state-updaters';
 import {receiveMapConfigUpdater as stateMapConfigUpdater} from './map-state-updaters';
 import {receiveMapConfigUpdater as styleMapConfigUpdater} from './map-style-updaters';
+import {setFeaturesUpdater as uiStateFeaturesUpdater} from './ui-state-updaters';
 import {findMapBounds} from 'utils/data-utils';
 import KeplerGlSchema from 'schemas';
 import {isPlainObject} from 'utils/utils';
@@ -168,3 +172,11 @@ export const addDataToMapUpdater = (state, {payload}) => {
 };
 
 export const addDataToMapComposed = addDataToMapUpdater;
+
+export const setFeaturesUpdater = (state, payload) => ({
+  ...state,
+  visState: visStateFeaturesUpdater(state.visState, payload),
+  uiState: uiStateFeaturesUpdater(state.uiState, payload)
+});
+
+export const setFeaturesComposed = setFeaturesUpdater;
