@@ -56,11 +56,12 @@ const actionHandler = {
   [ActionTypes.LOAD_FILES]: uiStateUpdaters.loadFilesUpdater,
   [ActionTypes.LOAD_FILES_ERR]: uiStateUpdaters.loadFilesErrUpdater,
 
+  // Geo operations
   [ActionTypes.SET_EDITOR_MODE]: uiStateUpdaters.setEditorModeUpdater,
-
   [ActionTypes.SET_FEATURES]: uiStateUpdaters.setFeaturesUpdater,
   [ActionTypes.SET_SELECTED_FEATURE]: uiStateUpdaters.setSelectedFeatureUpdater,
-  [ActionTypes.DELETE_FEATURE]: uiStateUpdaters.deleteFeatureUpdater
+  [ActionTypes.DELETE_FEATURE]: uiStateUpdaters.deleteFeatureUpdater,
+  [ActionTypes.SET_SELECTED_FEATURE]: uiStateUpdaters.setSelectedFeatureUpdater
 };
 
 /* Reducer */
