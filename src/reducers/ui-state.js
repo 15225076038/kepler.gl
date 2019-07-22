@@ -60,8 +60,7 @@ const actionHandler = {
   [ActionTypes.SET_EDITOR_MODE]: uiStateUpdaters.setEditorModeUpdater,
   [ActionTypes.SET_FEATURES]: uiStateUpdaters.setFeaturesUpdater,
   [ActionTypes.SET_SELECTED_FEATURE]: uiStateUpdaters.setSelectedFeatureUpdater,
-  [ActionTypes.DELETE_FEATURE]: uiStateUpdaters.deleteFeatureUpdater,
-  [ActionTypes.SET_SELECTED_FEATURE]: uiStateUpdaters.setSelectedFeatureUpdater
+  [ActionTypes.DELETE_FEATURE]: uiStateUpdaters.deleteFeatureUpdater
 };
 
 /* Reducer */

@@ -268,6 +268,10 @@ const timeDisplayMinWidth = 176;
 const timeDisplayOpacity = 0.8;
 const timeDisplayPadding = '0 24px';
 
+// Action Panel
+export const actionPanelWidth = 110;
+export const actionPanelHeight = 32;
+
 export const textTruncate = {
   maxWidth: '100%',
   overflow: 'hidden',
@@ -1034,6 +1038,7 @@ export const theme = {
   notificationPanelItemWidth,
   notificationPanelItemHeight,
 
+
   // datagrid
   columnWidth,
   extendColumnWidth,
@@ -1045,12 +1050,18 @@ export const theme = {
   gridDefaultHeight,
   gridPaddingSide,
 
+
   // time display
   timeDisplayBorderRadius,
   timeDisplayHeight,
   timeDisplayMinWidth,
   timeDisplayOpacity,
   timeDisplayPadding,
+
+  // Action Panel
+  actionPanelWidth,
+  actionPanelHeight,
+
   // Breakpoints
   breakPoints
 };
