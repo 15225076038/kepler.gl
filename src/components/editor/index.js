@@ -152,7 +152,7 @@ class Draw extends Component {
             datasets={datasets}
             layers={layers}
             onClose={this._closeFeatureAction}
-            onDeleteSelectedFeature={this._onDeleteSelectedFeature}
+            onDeleteFeature={this._onDeleteSelectedFeature}
             onToggleLayer={this.props.onToggleFeatureLayer}
             position={this.state.lastPosition}
           />

@@ -34,8 +34,7 @@ import {
 import {
   DEFAULT_MAP_STYLES,
   DEFAULT_LAYER_GROUPS,
-  DEFAULT_MAPBOX_API_URL,
-  MAP_MODES
+  DEFAULT_MAPBOX_API_URL
 } from 'constants/default-settings';
 import {generateHashId} from 'utils/utils';
 import {LOAD_MAP_STYLE_TASK} from 'tasks/tasks';
