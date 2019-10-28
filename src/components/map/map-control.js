@@ -58,38 +58,6 @@ const StyledMapControlAction = styled.div`
   justify-content: flex-end;
 `;
 
-const StyledMapControlButton = styled.div`
-  align-items: center;
-  background-color: ${props =>
-  props.active
-    ? props.theme.secondaryBtnActBgd
-    : props.theme.secondaryBtnBgd};
-  border-radius: 18px;
-  border: 0;
-  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.16);
-  color: ${props =>
-  props.active
-    ? props.theme.secondaryBtnActColor
-    : props.theme.secondaryBtnColor};
-  cursor: pointer;
-  display: flex;
-  height: 36px;
-  justify-content: center;
-  margin: 0;
-  outline: none;
-  padding: 0;
-  transition: ${props => props.theme.transition};
-  width: 36px;
-  :focus {
-    outline: none;
-  }
-  :hover {
-    cursor: pointer;
-    background-color: ${props => props.theme.secondaryBtnActBgd};
-    color: ${props => props.theme.secondaryBtnActColor};
-  }
-`;
-
 const StyledMapControlPanel = styled.div`
   background-color: ${props => props.theme.mapPanelBackgroundColor};
   flex-grow: 1;
@@ -229,7 +197,7 @@ const MapLegendPanel = ({layers, isActive, scale, onToggleMenuPanel, isExport}) 
 MapLegendPanel.displayName = 'MapControlPanel';
 
 const SplitMapButton = React.memo(({isSplit, mapIndex, onToggleSplitMap}) => (
-  <StyledMapControlButton
+  <MapControlButton
     active={isSplit}
     onClick={e => {
       e.preventDefault();
@@ -247,13 +215,13 @@ const SplitMapButton = React.memo(({isSplit, mapIndex, onToggleSplitMap}) => (
         isSplit ? 'Close current panel' : 'Switch to dual map view'
       }
     />
-  </StyledMapControlButton>
+  </MapControlButton>
 ));
 
 SplitMapButton.displayName = 'SplitMapButton';
 
 const Toggle3dButton = React.memo(({dragRotate, onTogglePerspective}) => (
-  <StyledMapControlButton
+  <MapControlButton
     onClick={e => {
       e.preventDefault();
       onTogglePerspective();
@@ -267,7 +235,7 @@ const Toggle3dButton = React.memo(({dragRotate, onTogglePerspective}) => (
       id="action-3d"
       message={dragRotate ? 'Disable 3D Map' : '3D Map'}
     />
-  </StyledMapControlButton>
+  </MapControlButton>
 ));
 
 Toggle3dButton.displayName = 'Toggle3dButton';
@@ -302,7 +270,7 @@ const MapDrawPanel = React.memo(({editor, isActive, onToggleMenuPanel, onSetEdit
           />
         </StyledToolBar>
       ) : null}
-      <StyledMapControlButton
+      <MapControlButton
         onClick={e => {
           e.preventDefault();
           onToggleMenuPanel();
@@ -316,7 +284,7 @@ const MapDrawPanel = React.memo(({editor, isActive, onToggleMenuPanel, onSetEdit
           id="map-draw"
           message="Draw on map"
         />
-      </StyledMapControlButton>
+      </MapControlButton>
     </div>
   );
 });
