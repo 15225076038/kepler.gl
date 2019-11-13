@@ -509,22 +509,6 @@ export function setFeatures(features) {
 }
 
 /**
- * It will apply the provide feature as filter to the given layer.
- * If the given feature is already applied as filter to the layer it  will remove it from  the filter list
- * @memberof visStateActions
- * @param {Object} feature
- * @param {Object} layer
- * @return {{feature: *, type: null, layer: *}}
- */
-export function toggleFeatureLayer(feature, layer) {
-  return {
-    type: ActionTypes.TOGGLE_FEATURE_LAYER,
-    feature,
-    layer
-  }
-}
-
-/**
  * This declaration is needed to group actions in docs
  */
 /**

@@ -71,7 +71,6 @@ export default function MapContainerFactory(MapPopover, MapControl) {
       mapState: PropTypes.object.isRequired,
       uiState: PropTypes.object.isRequired,
       mapStyle: PropTypes.object.isRequired,
-      mapControls: PropTypes.object.isRequired,
       mousePos: PropTypes.object.isRequired,
       mapboxApiAccessToken: PropTypes.string.isRequired,
       mapboxApiUrl: PropTypes.string,
@@ -417,7 +416,6 @@ export default function MapContainerFactory(MapPopover, MapControl) {
         datasets,
         mapboxApiAccessToken,
         mapboxApiUrl,
-        mapControls,
         uiState,
         uiStateActions,
         visStateActions,
@@ -450,7 +448,7 @@ export default function MapContainerFactory(MapPopover, MapControl) {
             layers={layers}
             layersToRender={layersToRender}
             mapIndex={this.props.index}
-            mapControls={mapControls}
+            mapControls={uiState.mapControls}
             readOnly={this.props.readOnly}
             scale={mapState.scale || 1}
             top={0}
@@ -461,36 +459,34 @@ export default function MapContainerFactory(MapPopover, MapControl) {
             onToggleMapControl={uiStateActions.toggleMapControl}
             onSetEditorMode={uiStateActions.setEditorMode}
           />
-          <div>
-            <MapComponent
-              {...mapProps}
-              key="bottom"
-              ref={this._setMapboxMap}
-              mapStyle={mapStyle.bottomMapStyle}
-              getCursor={this.props.hoverInfo ? () => 'pointer' : undefined}
-              transitionDuration={TRANSITION_DURATION}
-              onMouseMove={this.props.visStateActions.onMouseMove}
-            >
-              {this._renderDeckOverlay(layersToRender)}
-              {this._renderMapboxOverlays(layersToRender)}
-              {/*
+          <MapComponent
+            {...mapProps}
+            key="bottom"
+            ref={this._setMapboxMap}
+            mapStyle={mapStyle.bottomMapStyle}
+            getCursor={this.props.hoverInfo ? () => 'pointer' : undefined}
+            transitionDuration={TRANSITION_DURATION}
+            onMouseMove={this.props.visStateActions.onMouseMove}
+          >
+            {this._renderDeckOverlay(layersToRender)}
+            {this._renderMapboxOverlays(layersToRender)}
+            {/*
                 By placing the editor in this map we have to perform fewer checks for css zIndex
                 and fewer updates when we switch from edit to read mode
               */}
-              <Draw
-                datasets={datasets}
-                editor={uiState.editor}
-                features={editor.features}
-                isEnabled={isEdit}
-                layers={layers}
-                onDeleteFeature={uiStateActions.deleteFeature}
-                onSelect={uiStateActions.setSelectedFeature}
-                onUpdate={visStateActions.setFeatures}
-                style={{zIndex: isEdit ? 0 : -1}}
-                onToggleFeatureLayer={visStateActions.toggleFeatureLayer}
-              />
-            </MapComponent>
-          </div>
+            <Draw
+              datasets={datasets}
+              editor={uiState.editor}
+              features={editor.features}
+              isEnabled={isEdit}
+              layers={layers}
+              onDeleteFeature={uiStateActions.deleteFeature}
+              onSelect={uiStateActions.setSelectedFeature}
+              onUpdate={visStateActions.setFeatures}
+              style={{zIndex: isEdit ? 0 : -1}}
+              onToggleFeatureLayer={visStateActions.toggleFeatureLayer}
+            />
+          </MapComponent>
           {mapStyle.topMapStyle && (
             <div style={MAP_STYLE.top}>
               <MapComponent

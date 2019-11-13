@@ -36,7 +36,7 @@ const StyledActionsLayer = styled.div`
   left: ${props => props.position.x + LAYOVER_OFFSET}px;
 `;
 
-class FeatureActionPanel extends PureComponent {
+export class FeatureActionPanel extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     datasets: PropTypes.object.isRequired,
@@ -74,11 +74,13 @@ class FeatureActionPanel extends PureComponent {
                 color={datasets[layer.config.dataId].color}
                 isSelection
                 onClick={() => onToggleLayer(layer)}
+                className="layer-panel-item"
               />
             ))}
           </ActionPanelItem>
           <ActionPanelItem
             label="delete"
+            className="delete-panel-item"
             Icon={Trash}
             onClick={onDeleteFeature}
           />

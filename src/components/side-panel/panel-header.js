@@ -107,9 +107,7 @@ export const PanelAction = ({item, onClick}) => (
 );
 
 export const ExportImageFactory = () => {
-  const ExportImage = (props) => (
-    <ToolbarItem {...props}/>
-  );
+  const ExportImage = props => (<ToolbarItem {...props}/>);
   ExportImage.defaultProps = {
     label: 'Export Image',
     icon: <Picture />
@@ -119,9 +117,7 @@ export const ExportImageFactory = () => {
 };
 
 export const ExportDataFactory = () => {
-  const ExportData = (props) => (
-    <ToolbarItem {...props}/>
-  );
+  const ExportData = props => (<ToolbarItem {...props}/>);
   ExportData.defaultProps = {
     label: 'Export Data',
     icon: <Files />
@@ -131,9 +127,7 @@ export const ExportDataFactory = () => {
 };
 
 export const ExportMapFactory = () => {
-  const ExportMap = (props) => (
-    <ToolbarItem {...props}/>
-  );
+  const ExportMap = props => (<ToolbarItem {...props}/>);
   ExportMap.defaultProps = {
     label: 'Export Map',
     icon: <Map />
@@ -143,9 +137,7 @@ export const ExportMapFactory = () => {
 };
 
 export const SaveMapFactory = () => {
-  const SaveMap = (props) => (
-    <ToolbarItem {...props}/>
-  );
+  const SaveMap = props => (<ToolbarItem {...props}/>);
   SaveMap.defaultProps = {
     label: 'Save Map',
     icon: <Share />
@@ -154,11 +146,18 @@ export const SaveMapFactory = () => {
   return SaveMap;
 };
 
-export const SaveExportDropdownFactory = (
+SaveExportDropdownFactory.deps = [
+  ExportImageFactory,
+  ExportDataFactory,
+  ExportMapFactory,
+  SaveMapFactory
+];
+
+export function SaveExportDropdownFactory(
   ExportImage,
   ExportData,
   ExportMap,
-  SaveMap) => {
+  SaveMap) {
 
   const SaveExportDropdown = ({
     onExportImage,
@@ -175,31 +174,35 @@ export const SaveExportDropdownFactory = (
           className="save-export-dropdown__inner"
           show={show}
           onClose={onClose}>
-        <ExportImage
-          onClick={() => {
-            onExportImage();
-            onClose();
-          }}
-        />
-        <ExportData
-          onClick={() => {
-            onExportData();
-            onClose();
-          }}
-        />
-        <ExportMap
-          onClick={() => {
-            onExportMap();
-            onClose();
-          }}
-        />
-        {onSaveMap ? (
-          <SaveMap
+          <ExportImage
+            className="export-image"
             onClick={() => {
-              onSaveMap();
+              onExportImage();
               onClose();
             }}
           />
+          <ExportData
+            className="export-data"
+            onClick={() => {
+              onExportData();
+              onClose();
+            }}
+          />
+          <ExportMap
+            className="export-map"
+            onClick={() => {
+              onExportMap();
+              onClose();
+            }}
+          />
+          {onSaveMap ? (
+            <SaveMap
+              className="save-map"
+              onClick={() => {
+                onSaveMap();
+                onClose();
+              }}
+            />
         ) : null}
         </ClickOutsideCloseDropdown>
       </StyledToolbar>
@@ -208,14 +211,7 @@ export const SaveExportDropdownFactory = (
   };
 
   return SaveExportDropdown;
-};
-
-SaveExportDropdownFactory.deps = [
-  ExportImageFactory,
-  ExportDataFactory,
-  ExportMapFactory,
-  SaveMapFactory
-];
+}
 
 PanelHeaderFactory.deps = [
   SaveExportDropdownFactory
