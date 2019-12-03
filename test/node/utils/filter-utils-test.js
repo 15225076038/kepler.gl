@@ -30,7 +30,8 @@ import {
   getTimestampFieldDomain,
   getDefaultFilter,
   getDatasetIndexForFilter,
-  getDatasetFieldIndexForFilter
+  getDatasetFieldIndexForFilter,
+  validatePolygonFilter
 } from 'utils/filter-utils';
 
 import {processCsvData} from 'processors/data-processor';
@@ -734,4 +735,43 @@ test('filterUtils -> getDatasetIndexForFilter', t => {
   t.end();
 });
 
+test('filterUtils -> validatePolygonFilter', t => {
+  const filter = {
+    layerId: ['layer1'],
+    dataId: ['puppy'],
+    value: {
+      id: 'feature_1',
+      geometry: {
+        coordinates: []
+      }
+    },
+    type: 'polygon'
+  };
+
+  const dataset = {
+    id: 'puppy'
+  };
+
+  const layers = [{
+    id: 'layer1'
+  }];
+
+  t.deepEqual(
+    validatePolygonFilter(dataset, filter, layers).filter,
+    {
+      ...filter,
+      fieldIdx: [ 0 ],
+      freeze: true
+    },
+    'Should positively validate filter'
+  );
+
+  t.equal(
+    validatePolygonFilter(dataset, filter, [{id: 'layer2'}]).filter,
+    null,
+    'Should not validate the filter since layers are not matched'
+  );
+
+  t.end();
+});
 /* eslint-enable max-statements */

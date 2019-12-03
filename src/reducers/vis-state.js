@@ -97,7 +97,11 @@ const actionHandler = {
 
   [ActionTypes.SET_FEATURES]: visStateUpdaters.setFeaturesUpdater,
 
-  [ActionTypes.DELETE_FEATURE]: visStateUpdaters.deleteFeatureUpdater
+  [ActionTypes.DELETE_FEATURE]: visStateUpdaters.deleteFeatureUpdater,
+
+  [ActionTypes.TOGGLE_POLYGON_FILTER]: visStateUpdaters.togglePolygonFilterUpdater,
+
+  [ActionTypes.SET_SELECTED_FEATURE]: visStateUpdaters.setSelectedFeatureUpdater
 };
 
 // construct vis-state reducer

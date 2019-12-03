@@ -32,8 +32,7 @@ import {
   setExportDataType,
   setExportFiltered,
   addNotification,
-  setEditorMode,
-  deleteFeature
+  setEditorMode
 } from 'actions/ui-state-actions';
 import {loadFiles, loadFilesErr, setFeatures} from 'actions/vis-state-actions';
 import reducer, {uiStateReducerFactory} from 'reducers/ui-state';
@@ -50,7 +49,6 @@ import {
 import {removeNotification} from 'actions/ui-state-actions';
 import {EDITOR_MODES} from 'constants/default-settings';
 import {mockPolygonFeature} from '../../fixtures/polygon';
-import {setSelectedFeature} from '../../../src/actions';
 
 test('#uiStateReducer', t => {
   t.deepEqual(
@@ -397,27 +395,10 @@ test('#uiStateReducer -> SET_FEATURES/SET_SELECTED_FEATURE/DELETE_FEATURE', t =>
     mockPolygonFeature
   ]));
 
-
   t.equal(
     newState.editor.mode,
     EDITOR_MODES.EDIT_VERTEX,
     'Editor mode should be set to edit_vertex'
-  );
-
-  newState = reducer(newState, setSelectedFeature({selectedFeatureId: mockPolygonFeature.id}));
-
-  t.equal(
-    newState.editor.selectedFeature.id,
-    mockPolygonFeature.id,
-    'Selected feature should have been set correctly'
-  );
-
-  newState = reducer(newState, deleteFeature(mockPolygonFeature.id));
-
-  t.equal(
-    newState.editor.selectedFeature,
-    null,
-    'Editor reset selected feature to null'
   );
 
   t.end();
