@@ -2775,7 +2775,8 @@ test('#visStateReducer -> REMOVE_DATASET w filter and layer', t => {
     layerToBeMerged: [],
     filterToBeMerged: [],
     splitMapsToBeMerged: [],
-    interactionToBeMerged: []
+    interactionToBeMerged: [],
+    editor: oldState.editor
   };
 
   const newReducer = reducer(
@@ -2993,7 +2994,8 @@ test('#visStateReducer -> SPLIT_MAP: REMOVE_DATASET', t => {
     layerToBeMerged: [],
     filterToBeMerged: [],
     splitMapsToBeMerged: [],
-    interactionToBeMerged: []
+    interactionToBeMerged: [],
+    editor: oldState.editor
   };
 
   const newReducer = reducer(
