@@ -20,6 +20,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import classnames from 'classnames';
 
 const StyledPanelDropdown = styled.div`
   display: flex;
@@ -74,7 +75,7 @@ const StyledPanelDropdown = styled.div`
 `;
 
 const Toolbar = React.memo(({children, className, show, direction = 'row'}) => (
-  <StyledPanelDropdown className={`${className || ''} save-export-dropdown`} show={show} direction={direction}>
+  <StyledPanelDropdown className={classnames('save-export-dropdown', className)} show={show} direction={direction}>
     {children}
   </StyledPanelDropdown>
 ));

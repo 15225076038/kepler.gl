@@ -33,7 +33,7 @@ export default class Rectangle extends Component {
 
   static defaultProps = {
     height: '16px',
-    predefinedClassName: 'data-ex-icons-polygon',
+    predefinedClassName: 'data-ex-icons-rectangle',
     viewBox: '0 0 22 16'
   };
 

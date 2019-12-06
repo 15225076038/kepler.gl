@@ -23,6 +23,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {Editor} from 'react-map-gl-draw';
 import window from 'global/window';
+import classnames from 'classnames';
 
 import FeatureActionPanel from './feature-action-panel';
 
@@ -134,7 +135,7 @@ class Draw extends Component {
     const {selectedFeature = {}} = editor;
 
     return (
-      <StyledWrapper editor={editor} className={`${className || ''} editor`} style={style}>
+      <StyledWrapper editor={editor} className={classnames('editor', className)} style={style}>
         <Editor
           clickRadius={clickRadius}
           mode={editor.mode}
